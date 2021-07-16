@@ -1,0 +1,24 @@
+{% extends "blogs/base.html" %}
+{% load i18n %}
+{% block title %}{{ blog.name }}{% endblock title %}
+{% block content %}
+    <h1>{{ blog.name }} ,{% trans 'Блог ведёт' %} {{ blog.nickname }}</h1>
+    <p>Информация об авторе:  {{ blog.author_info }}</p>
+    <p><a href="{% url 'blog_redact' blog.id %}"> {% trans 'Редактировать' %}</a> </p>
+    <p><a href="{% url 'blog_list' %}">{% trans 'Назад к списку блогов' %}</a> </p>
+    <p><a href="{% url 'create_post' blog.id %}">{% trans 'Оставить пост' %}</a></p>
+    {% if blog.post.all %}
+        {% for post in blog.post.all %}
+            <ul>
+            <li><a href="{{ post.get_absolute_url }}">{{ post.name }}</a></li>
+            <li>{{ post.content|slice:":100" }}</li>
+            </ul>
+        {% endfor %}
+    {% endif %}
+    <p>{% trans 'Загрузка нескольких постов' %}</p>
+    <form method="post" action="{% url 'post_download' blog.id %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form_download.as_p }}
+        <button type="submit">{% trans 'Загрузить посты' %}</button>
+    </form>
+{% endblock content %}

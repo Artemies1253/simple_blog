@@ -1,0 +1,13 @@
+{% extends "blogs/base.html" %}
+{% block title %}{{ post.name }}{% endblock title %}
+{% block content %}
+    <h1>{{ post.name }}</h1>
+    <p style="width: 50%">{{ post.content }}</p>
+    {% if post.post_image.all %}
+        <p>
+        {% for post_image in post.post_image.all %}
+            <img src="{{ post_image.image.url }}" style="width: 500px; height: 500px">
+        {% endfor %}
+        </p>
+    {% endif %}
+{% endblock content %}

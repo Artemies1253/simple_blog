@@ -1,0 +1,11 @@
+{% extends "users/base.html" %}
+{% load i18n %}
+{% block title %}{% trans 'Редактирование профиля' %} {{ request.user.username }}{% endblock title %}
+{% block content %}
+    <h1>{% trans 'Профиль' %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ profile_form.as_p }}
+        <button type="submit">{% trans 'Редактировать' %}</button>
+    </form>
+{% endblock content %}

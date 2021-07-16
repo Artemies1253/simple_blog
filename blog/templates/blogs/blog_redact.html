@@ -1,0 +1,11 @@
+{% extends "blogs/base.html" %}
+{% load i18n %}
+{% block title %}{% trans 'Редактирование' %}{{ blog.name }}{% endblock title %}
+{% block content %}
+    <h1>{{ blog.name }} , {% trans 'Блог ведёт' %} {{ blog.nickname }} </h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">{% trans 'Редактировать' %}</button>
+    </form>
+{% endblock content %}

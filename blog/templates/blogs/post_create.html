@@ -1,0 +1,11 @@
+{% extends "blogs/base.html" %}
+{% load i18n %}
+{% block title %}{% trans 'Создание поста' %}}{% endblock title %}
+{% block content %}
+    <h1>{% trans 'Создание поста' %}</h1>
+    <form method="post", enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">{% trans 'Опубликовать пост' %}</button>
+    </form>
+{% endblock content %}

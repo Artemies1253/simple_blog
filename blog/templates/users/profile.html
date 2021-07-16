@@ -1,0 +1,13 @@
+{% extends "users/base.html" %}
+{% load i18n %}
+{% block title %}{% trans 'Профиль' %} {{ request.user.username }}{% endblock title %}
+{% block content %}
+    <h1>{% trans 'Профиль' %}</h1>
+    <p><a href="{% url 'profile_redact' %}">{% trans 'Редактировать' %}</a></p>
+    <p>{% trans 'Логин' %}: {{ request.user.username }}</p>
+    <p>{% trans 'Имя' %}: {{ request.user.first_name }}</p>
+    <p>{% trans 'Фамилия' %}: {{ request.user.last_name }}</p>
+    <p>{% trans 'Телефон' %}: {{ request.user.profile.phone }}</p>
+    <p>{% trans 'Город' %}" {{ request.user.profile.city }}</p>
+    <p><a href="{% url 'main' %}">{% trans 'Главная страница' %}</a></p>
+{% endblock content %}
