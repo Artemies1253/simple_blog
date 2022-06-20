@@ -10,4 +10,4 @@
 ###### pip install -r requirements
 ###### Создаём базу данных и применяем миграции python manage.py migrate
 ###### Запускаем проект python manage.py runserver
-####### Переключение языков реализовано в header в templetes, можете менять в настройках django.
+###### Переключение языков реализовано в header в templetes, можете менять в настройках django.
